@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Brief</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>Market Brief</h1>
+    <p class="subtitle">Top market stories from {{ sources|join(", ") }} + your watchlist recap</p>
+  </div>
+  <div class="header-actions">
+    <span id="status" class="status"></span>
+    <button id="refresh-news" class="btn">Refresh news</button>
+  </div>
+</header>
+
+<main>
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Top 10 market stories</h2>
+      <span id="news-meta" class="meta"></span>
+    </div>
+    <ol id="news-list" class="news-list"><li class="empty">Loading…</li></ol>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Watchlist</h2>
+    </div>
+    <form id="add-form" class="add-form">
+      <input id="symbol-input" placeholder="Add ticker (e.g. AAPL, NVDA, 0700.HK)" autocomplete="off" required>
+      <button class="btn primary" type="submit">Add</button>
+    </form>
+    <div id="watchlist-error" class="error"></div>
+    <div class="table-wrap">
+      <table id="watchlist-table">
+        <thead>
+          <tr><th>Symbol</th><th>Open</th><th>Close</th><th>Change</th><th>Day range</th><th>Volume</th><th></th></tr>
+        </thead>
+        <tbody><tr><td colspan="7" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Morning recap</h2>
+      <div class="panel-actions">
+        <span id="recap-meta" class="meta"></span>
+        <button id="run-recap" class="btn">Generate now</button>
+        <button id="send-recap" class="btn">Generate &amp; send</button>
+      </div>
+    </div>
+    <div id="recap-body" class="recap-body"><p class="empty">No recap generated yet.</p></div>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
