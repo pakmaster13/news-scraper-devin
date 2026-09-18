@@ -82,7 +82,7 @@ async function loadWatchlist() {
         return `<tr>
           <td><b>${q.symbol}</b><small>${q.name || ""}${q.session_date ? " · " + q.session_date : ""}</small></td>
           <td>${fmt(q.open)}</td>
-          <td>${fmt(q.close)}</td>
+          <td>${fmt(q.close)}${q.close_is_live ? '<small title="session still open — live price">live</small>' : ""}</td>
           ${changeCell(q.change_pct)}
           <td>${fmt(q.low)} – ${fmt(q.high)}</td>
           <td>${fmtInt(q.volume)}</td>
